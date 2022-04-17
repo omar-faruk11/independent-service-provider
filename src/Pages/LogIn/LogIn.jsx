@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, Spinner } from 'react-bootstrap';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import SignInWithSocal from '../../Components/SigninWithSocal/SignInWithSocal';
 import auth from '../../firebase.init';
 import { ToastContainer, toast } from 'react-toastify';
@@ -9,7 +9,10 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const LogIn = () => {
     const navigate = useNavigate();
+    const location = useLocation()
     const [email, setEmali] = useState()
+    const from = location.state?.from?.pathname || "/";
+
     const [
         signInWithEmailAndPassword,
         user,
@@ -29,9 +32,11 @@ const LogIn = () => {
         await sendPasswordResetEmail(email);
           toast('Sent email');
       }
+      if(loading){
+          return <Spinner animation="border" />
+      }
       if(user){
-          console.log(user);
-          navigate('/')
+        navigate(from, { replace: true });
       }
     return (
         <div className="container-fluid row">
