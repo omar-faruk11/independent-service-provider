@@ -24,7 +24,7 @@ const Register = () => {
         if(password !== confirmPassword){
             return;
         }
-        createUserWithEmailAndPassword(email,password);
+        await createUserWithEmailAndPassword(email,password);
         await updateProfile({ displayName });
     }
     if(user){
