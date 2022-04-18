@@ -1,17 +1,28 @@
-import React from 'react';
-import { useSignInWithFacebook, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import React, { useEffect } from 'react';
+import { useAuthState, useSignInWithFacebook, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useLocation, useNavigate } from 'react-router-dom';
 import '../../App'
 import auth from '../../firebase.init';
 
 const SignInWithSocal = () => {
+    const navigate = useNavigate()
+    const location = useLocation()
+    const [user] = useAuthState(auth)
     const [signInWithGoogle] = useSignInWithGoogle(auth);
     const [signInWithFacebook] = useSignInWithFacebook(auth);
+    const from = location.state?.from?.pathname || "/";
+
     const handleGoogleSignIn =() =>{
         signInWithGoogle()
     }
     const handleFacebookSignIn = () =>{
         signInWithFacebook()
     } 
+    useEffect(()=>{
+        if(user){
+            navigate(from, { replace: true });
+          }
+     },[user])
     return (
         <div>
             <div className=' d-flex justify-content-center align-items-center mb-2'>

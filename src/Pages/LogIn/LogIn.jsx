@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -6,23 +6,23 @@ import SignInWithSocal from '../../Components/SigninWithSocal/SignInWithSocal';
 import auth from '../../firebase.init';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Loading from '../../Components/Loading/Loading';
+import Header from '../../Sheard/Header/Header';
 
 const LogIn = () => {
     const navigate = useNavigate();
     const location = useLocation()
     const [email, setEmali] = useState('')
     const from = location.state?.from?.pathname || "/";
-
+     
     const [
         signInWithEmailAndPassword,
         user,
-        loading,
         error,
       ] = useSignInWithEmailAndPassword(auth);
-      const [sendPasswordResetEmail, sending, passwordUpdateerror] = useSendPasswordResetEmail(
+      const [sendPasswordResetEmail] = useSendPasswordResetEmail(
         auth
       );
+      
       const handleLogInFormSubmit = (event) =>{
           event.preventDefault()
         const email = event.target.email.value;
@@ -37,15 +37,17 @@ const LogIn = () => {
           toast('Sent email');
         }
       }
-      if(loading){
-          return <Loading></Loading>
-      }
+      useEffect(()=>{
+        if(user){
+            navigate(from, { replace: true });
+          }
+     },[user])
+
       
-      if(user){
-        navigate(from, { replace: true });
-      }
     return (
-        <div className="container-fluid row pe-0">
+        <div>
+            <Header></Header>
+            <div className="container-fluid row pe-0">
             <div className='col-12 col-md-3 mx-auto p-3 shadow rounded-3 mt-5'>
                 <Form onSubmit={handleLogInFormSubmit} className='mb-2'>
                     <h3 className=' text-center fw-bold mb-4'>Log In </h3>
@@ -67,12 +69,13 @@ const LogIn = () => {
                     <p className='mt-2 mb-0'>Not Register yet?
                         <span onClick={() => navigate('/register')} className=' text-primary pointer-event' role="button"> Create an Account</span></p>
                     <p className=' mt-2 mb-0'>Forget Password?
-                        <span onClick={handleResetPassword} className=' text-primary pointer-event' role="button">Reset Password</span></p>
+                      <span onClick={handleResetPassword} className=' text-primary pointer-event' role="button">Reset Password</span></p>
                         
                 </Form>
                 <ToastContainer/>
                 <SignInWithSocal></SignInWithSocal>
             </div>
+        </div>
         </div>
     );
 };

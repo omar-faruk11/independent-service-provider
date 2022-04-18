@@ -1,6 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import Header from './Sheard/Header/Header';
 import AboutMe from './Pages/AboutMe/AboutMe';
 import Blogs from './Pages/Blogs/Blogs';
 import Home from './Pages/Home/Home';
@@ -13,11 +12,10 @@ import Chackout from './Pages/Chackout/Chackout';
 function App() {
   return (
     <>
-    <Header></Header>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='Blogs' element={<Blogs></Blogs>}></Route>
-        <Route path='aboutme' element={<AboutMe></AboutMe>}></Route>
+        <Route path='about' element={<AboutMe></AboutMe>}></Route>
         <Route path='login' element={<LogIn></LogIn>}></Route>
         <Route path='register' element={<Register></Register>}></Route>
         <Route path='chackout' element={

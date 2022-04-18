@@ -1,21 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import SignInWithSocal from '../../Components/SigninWithSocal/SignInWithSocal';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
-import Loading from '../../Components/Loading/Loading';
+import Header from '../../Sheard/Header/Header';
 const Register = () => {
     const [passwordError , setPasswordError] = useState("")
     const navigate = useNavigate();
+    const location = useLocation()
+    const from = location.state?.from?.pathname || "/";
+
 
     const [
         createUserWithEmailAndPassword,
         user,
-        loading,
         error,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
-    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+    const [updateProfile] = useUpdateProfile(auth);
 
     const handleFormSubmit = async (event) => {
         event.preventDefault()
@@ -31,16 +33,17 @@ const Register = () => {
             await updateProfile({ displayName });
         }
     }
-    if (loading || updating) {
-        return <Loading></Loading>
-    }
-    if(user){
-        navigate('/');
-      }
+    useEffect(()=>{
+        if(user){
+            navigate(from, { replace: true });
+          }
+     },[user])
 
     return (
-        <div className=" container-fluid row ">
-            <div className='col-8 col-md-3 mx-auto p-3 shadow rounded-3 mt-5'>
+        <div>
+            <Header></Header>
+            <div className=" container-fluid row ">
+            <div className='col-12 col-md-3 mx-auto p-3 shadow rounded-3 mt-5'>
                 <h3 className=' text-center fw-bold mb-4'>Register</h3>
                 <Form onSubmit={handleFormSubmit}>
                     <Form.Group className="mb-3" controlId="name">
@@ -75,6 +78,7 @@ const Register = () => {
                 <p className='text-center mt-2 mb-0'>Already Have An Account? <span onClick={() => navigate('/login')} className=' text-primary pointer-event' role="button">Login</span></p>
                 <SignInWithSocal></SignInWithSocal>
             </div>
+        </div>
         </div>
     );
 };

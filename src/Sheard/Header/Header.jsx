@@ -16,7 +16,7 @@ const Header = () => {
     return (
         <Navbar sticky='top' collapseOnSelect expand="lg" bg="light" variant="light">
             <Container>
-                <Navbar.Brand as={Link} to="/">Dream Photography</Navbar.Brand>
+                <Navbar.Brand className=' display-2 fw-bold' as={Link} to="/">Dream Photography</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="ms-auto text-capitalize fw-bold ">
@@ -27,10 +27,10 @@ const Header = () => {
                             <CoustomLink className='menu mx-0 mx-md-2 p-1' to="/chackout">Chack Out</CoustomLink>
                         </Nav>
                         <Nav><CoustomLink className='menu mx-0 mx-md-2 p-1' to="/blogs">Blogs</CoustomLink></Nav>
-                        <Nav><CoustomLink className='menu mx-0 mx-md-2 p-1' to="aboutme">About Me</CoustomLink></Nav>
+                        <Nav><CoustomLink className='menu mx-0 mx-md-2 p-1' to="/about">About Me</CoustomLink></Nav>
                         { !user ?
-                            <Nav><CoustomLink className='menu mx-0 mx-md-2 p-1' to="login">Log In</CoustomLink></Nav>:
-                            <Nav.Link onClick={handleLogOut}  as={Link} to="/">Log Out</Nav.Link>
+                            <Nav><CoustomLink className='menu mx-0 mx-md-2 p-1' to="/login">Log In</CoustomLink></Nav>:
+                            <Nav role="button" onClick={handleLogOut}>Log Out</Nav>
                         }
                     </Nav>
                 </Navbar.Collapse>
