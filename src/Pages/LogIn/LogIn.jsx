@@ -45,8 +45,8 @@ const LogIn = () => {
         navigate(from, { replace: true });
       }
     return (
-        <div className="container-fluid row">
-            <div className='col-8 col-md-3 mx-auto p-3 shadow rounded-3 mt-5'>
+        <div className="container-fluid row pe-0">
+            <div className='col-12 col-md-3 mx-auto p-3 shadow rounded-3 mt-5'>
                 <Form onSubmit={handleLogInFormSubmit} className='mb-2'>
                     <h3 className=' text-center fw-bold mb-4'>Log In </h3>
                     <Form.Group className="mb-3" controlId="formBasicEmail">

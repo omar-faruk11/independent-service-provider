@@ -1,8 +1,10 @@
 import { signOut } from 'firebase/auth';
 import React from 'react';
+import '../../App'
 import { Container, Nav, Navbar} from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link } from 'react-router-dom';
+import CoustomLink from '../../Components/CoustomLink';
 import auth from '../../firebase.init';
 
 const Header = () => {
@@ -14,16 +16,20 @@ const Header = () => {
     return (
         <Navbar sticky='top' collapseOnSelect expand="lg" bg="light" variant="light">
             <Container>
-                <Navbar.Brand as={Link} to="/">React-Bootstrap</Navbar.Brand>
+                <Navbar.Brand as={Link} to="/">Dream Photography</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="ms-auto text-uppercase fw-bold">
-                        <Nav.Link as={Link} to="/">Home</Nav.Link>
-                        <Nav.Link as={Link} to="/chackout">Chack Out</Nav.Link>
-                        <Nav.Link as={Link} to="/blogs">Blogs</Nav.Link>
-                        <Nav.Link as={Link} to="aboutme">About Me</Nav.Link>
+                    <Nav className="ms-auto text-capitalize fw-bold ">
+                        <Nav>
+                            <CoustomLink className='menu mx-0 mx-md-2 p-1' to='/'>Home</CoustomLink>
+                        </Nav>
+                        <Nav>
+                            <CoustomLink className='menu mx-0 mx-md-2 p-1' to="/chackout">Chack Out</CoustomLink>
+                        </Nav>
+                        <Nav><CoustomLink className='menu mx-0 mx-md-2 p-1' to="/blogs">Blogs</CoustomLink></Nav>
+                        <Nav><CoustomLink className='menu mx-0 mx-md-2 p-1' to="aboutme">About Me</CoustomLink></Nav>
                         { !user ?
-                            <Nav.Link as={Link} to="login">Log In</Nav.Link>:
+                            <Nav><CoustomLink className='menu mx-0 mx-md-2 p-1' to="login">Log In</CoustomLink></Nav>:
                             <Nav.Link onClick={handleLogOut}  as={Link} to="/">Log Out</Nav.Link>
                         }
                     </Nav>

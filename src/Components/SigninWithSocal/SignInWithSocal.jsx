@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSignInWithFacebook, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import '../../App'
 import auth from '../../firebase.init';
 
 const SignInWithSocal = () => {
