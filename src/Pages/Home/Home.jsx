@@ -23,10 +23,10 @@ const Home = () => {
                     <div className="col-12 col-md-6 order-2 order-md-1">
                         <div className=" mt-mb-5 pt-5">
                             <div>
-                                <p className="display-5 fw-bold">
+                                <p className="display-5 fw-bold textu">
                                     Dream Photography
                                 </p>
-                                <p>Digital Photography. you need to take your photography to the next level. We offer daily tips, resources and free tutorials that will help you get the most out your camera and create stunning photos</p>
+                                <p>Digital Photography. you need to take your photography to the next level.I am offer daily tips, resources and free tutorials that will help you get the most out your camera and create stunning photos</p>
                                 <button className='btn btn-danger text-uppercase'>Start here</button>
                             </div>
                         </div>
@@ -47,7 +47,7 @@ const Home = () => {
                     <h2 className=' text-center mt-5 mb-4 fw-bold text-capitalize'>Contact me</h2>
                     <div className="row mx-auto">
                         <div className="col-12 col-md-5  ">
-                            <img className='img-fluid d-block mx-auto' src="https://img.freepik.com/free-vector/customer-support-illustration_23-2148893568.jpg?size=338&ext=jpg&ga=GA1.2.816967961.1650037131" alt="" />
+                            <img className='img-fluid d-block mx-auto mt-5' src="https://img.freepik.com/free-vector/customer-support-illustration_23-2148893568.jpg?size=338&ext=jpg&ga=GA1.2.816967961.1650037131" alt="" />
                         </div>
                         <div className="col-12 col-md-6">
                             <form onSubmit={handlemessagesubmit}>

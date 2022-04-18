@@ -16,7 +16,7 @@ const Header = () => {
     return (
         <Navbar sticky='top' collapseOnSelect expand="lg" bg="light" variant="light">
             <Container>
-                <Navbar.Brand className=' display-2 fw-bold' as={Link} to="/">Dream Photography</Navbar.Brand>
+                <Navbar.Brand className='text-uppercase fw-bold' as={Link} to="/">Dream Photography</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="ms-auto text-capitalize fw-bold ">
