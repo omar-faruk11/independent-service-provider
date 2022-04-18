@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { useAuthState, useSignInWithFacebook, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import React from 'react';
+import { useSignInWithFacebook, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import '../../App'
 import auth from '../../firebase.init';
@@ -7,9 +7,9 @@ import auth from '../../firebase.init';
 const SignInWithSocal = () => {
     const navigate = useNavigate()
     const location = useLocation()
-    const [user] = useAuthState(auth)
-    const [signInWithGoogle] = useSignInWithGoogle(auth);
-    const [signInWithFacebook] = useSignInWithFacebook(auth);
+    
+    const [signInWithGoogle , googleUser, gloading, gerror] = useSignInWithGoogle(auth);
+    const [signInWithFacebook , fadebookUser, floading, ferror] = useSignInWithFacebook(auth);
     const from = location.state?.from?.pathname || "/";
 
     const handleGoogleSignIn =() =>{
@@ -18,11 +18,9 @@ const SignInWithSocal = () => {
     const handleFacebookSignIn = () =>{
         signInWithFacebook()
     } 
-    useEffect(()=>{
-        if(user){
-            navigate(from, { replace: true });
-          }
-     },[user])
+    if(googleUser || fadebookUser){
+        navigate(from, { replace: true });
+      }
     return (
         <div>
             <div className=' d-flex justify-content-center align-items-center mb-2'>
@@ -38,6 +36,12 @@ const SignInWithSocal = () => {
                 <img src="https://img.icons8.com/fluency/25/000000/facebook-new.png" alt="" />
                 <span className='ms-2'>Sign in with Facebook</span>
             </div>
+            {
+                gerror ? <p>{gerror.message}</p>: " "
+            }
+            {
+                ferror? <p>{ferror.message}</p>: ""
+            }
         </div>
     );
 };
