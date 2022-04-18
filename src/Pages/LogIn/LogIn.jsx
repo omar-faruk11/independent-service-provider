@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
-import { Button, Form, Spinner } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import SignInWithSocal from '../../Components/SigninWithSocal/SignInWithSocal';
 import auth from '../../firebase.init';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Loading from '../../Components/Loading/Loading';
 
 const LogIn = () => {
     const navigate = useNavigate();
     const location = useLocation()
-    const [email, setEmali] = useState()
+    const [email, setEmali] = useState('')
     const from = location.state?.from?.pathname || "/";
 
     const [
@@ -26,15 +27,20 @@ const LogIn = () => {
           event.preventDefault()
         const email = event.target.email.value;
         const password = event.target.password.value;
-        signInWithEmailAndPassword(email,password)
+        if(email && password){
+            signInWithEmailAndPassword(email,password)
+        }
       }
       const handleResetPassword = async () =>{
-        await sendPasswordResetEmail(email);
+        if(email){
+            await sendPasswordResetEmail(email);
           toast('Sent email');
+        }
       }
       if(loading){
-          return <Spinner animation="border" />
+          return <Loading></Loading>
       }
+      
       if(user){
         navigate(from, { replace: true });
       }
@@ -52,6 +58,9 @@ const LogIn = () => {
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Control type="password" placeholder="Password" name='password' />
                     </Form.Group>
+                    {
+                        error? <p>{error.message}</p> : ""
+                    }
                     <Button className='w-100' variant="danger" type="submit">
                         Submit
                     </Button>
@@ -60,8 +69,8 @@ const LogIn = () => {
                     <p className=' mt-2 mb-0'>Forget Password?
                         <span onClick={handleResetPassword} className=' text-primary pointer-event' role="button">Reset Password</span></p>
                         
-                        <ToastContainer/>
                 </Form>
+                <ToastContainer/>
                 <SignInWithSocal></SignInWithSocal>
             </div>
         </div>

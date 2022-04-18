@@ -2,19 +2,22 @@
     {
       "id": 0,
       "picture": "https://images.unsplash.com/photo-1553352797-48b467860bdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGxpZmVzdHlsZSUyMHBob3RvZ3JhcGh5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-      "name": "Palmer Wilder",
-      "price": "$19.89"
+      "name": "Event photography",
+      "details": "Event photographs various events, capturing the atmosphere and personalities of each occasion. From conference photography for Marks and Spencer, product launches, seminars to restaurant Pop-Ups and opening nights for bars throughout London, Oxford and Brighton. ",
+      "price": "3.00"
     },
     {
       "id": 1,
       "picture": "https://images.unsplash.com/photo-1553352797-48b467860bdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGxpZmVzdHlsZSUyMHBob3RvZ3JhcGh5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-      "name": "Middleton Randolph",
-      "price": "$18.30"
+      "name": "Lifestyle photography",
+      "details": "Lifestyle photography relaxed approach aims to make even the most nervous sitter feel at ease in front of the lense and enjoy the photographic experience",
+      "price": "2.00"
     },
     {
       "id": 2,
       "picture": "https://images.unsplash.com/photo-1553352797-48b467860bdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGxpZmVzdHlsZSUyMHBob3RvZ3JhcGh5fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
-      "name": "Mitchell Rivera",
-      "price": "$12.52"
+      "name": "Commercial photography",
+      "details": "Commercial photography Working with brands to create a range of captivating social media content that followers will want to engage with, from lifestyle",
+      "price": "1.00"
     }
   ]
