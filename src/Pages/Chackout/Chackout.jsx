@@ -46,9 +46,6 @@ const Chackout = () => {
                             <Form.Control type="number" placeholder="Your phone number" name='phone' />
                         </Form.Group>
 
-                        <Form.Group className="mb-3" controlId="formBasicChagori">
-                            <Form.Control type="text" placeholder="Which service do your want?" name='chagori' />
-                        </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formBasicPicture">
                             <Form.Control type="number" placeholder="How many picture you want?" name='pices' />

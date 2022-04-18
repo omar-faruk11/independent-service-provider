@@ -40,7 +40,23 @@ const Home = () => {
                         services.map(service => <Service key={service.id} service={service}></Service>)
                     }
                 </div>
-                
+                <div>
+                    <h2 className=' text-center mt-5 mb-4 fw-bold text-capitalize'>Contact me</h2>
+                    <div className="row mx-auto">
+                        <div className="col-12 col-md-5  ">
+                            <img className='img-fluid d-block mx-auto' src="https://img.freepik.com/free-vector/customer-support-illustration_23-2148893568.jpg?size=338&ext=jpg&ga=GA1.2.816967961.1650037131" alt="" />
+                        </div>
+                        <div className="col-12 col-md-6">
+                            <label className='form-label my-2' htmlFor="name">Name:</label>
+                            <input className=' shadow-sm form-control ' type="text" name="name" placeholder='Enter your name' id="name" />
+                            <label className='form-label my-2' htmlFor="email">Email:</label>
+                            <input className=' shadow-sm form-control ' type="email" name="email" placeholder='Enter your email' id="email" />
+                            <label className='form-label my-2' htmlFor="textarea">Message</label>
+                            <textarea className=' form-control shadow-sm' name="textarea" id="textarea" cols="30" rows="5"></textarea>
+                        </div>
+
+                    </div>
+                </div>
             </div>
             <Footer></Footer>
         </div>
